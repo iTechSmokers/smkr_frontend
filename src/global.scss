@@ -1,0 +1,43 @@
+@import "./vars.scss";
+
+body {
+    background: map-get($primary_colors, "Background");
+    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    margin: 0 0 100px 0;
+}
+
+button,
+a.button {
+    display: flex;
+    letter-spacing: 1px;
+    user-select: none;
+
+    &.primary {
+        padding: 12px 18px;
+        outline: 0;
+        background: none;
+        border: 1px solid white;
+        color: white;
+        font-size: 16px;
+        border-radius: 10px;
+        transition: 0.1s;
+    }
+
+    &:hover,
+    &:focus {
+        background: white;
+        color: black;
+        cursor: pointer;
+    }
+
+    &:active {
+        transform: scale(1.05);
+    }
+
+    &.big {
+        transition: 1s;
+        padding: 24px 54px;
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+}
