@@ -8,6 +8,7 @@ const StartPage = () => {
     const [headingClass, setHeadingClass] = useState("hidden");
     const [buttonClass, setButtonClass] = useState("hidden");
     const [authFormWrapperClass, setAuthFormWrapperClass] = useState("hidden");
+    const [cloudsClass, setCloudsClass] = useState("");
 
     const [showButton, setShowButton] = useState(true);
     const [showAuthForm, setShowAuthForm] = useState(false);
@@ -44,6 +45,7 @@ const StartPage = () => {
             setShowButton(false);
             setShowAuthForm(true);
             setTimeout(() => setAuthFormWrapperClass(""), 100);
+            setCloudsClass("visible");
         }, 1000);
     };
 
@@ -67,6 +69,18 @@ const StartPage = () => {
             {showAuthForm && (
                 <AuthForm className={authFormWrapperClass}></AuthForm>
             )}
+            <img
+                src="/cloud.png"
+                className={`cloud cloud-left ${
+                    cloudsClass ? ` ${cloudsClass}` : ""
+                }`}
+            />
+            <img
+                src="/cloud.png"
+                className={`cloud cloud-right ${
+                    cloudsClass ? ` ${cloudsClass}` : ""
+                }`}
+            />
         </main>
     );
 };
