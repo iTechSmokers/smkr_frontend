@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./startPage.scss";
 import { useTextWriting } from "../../hooks/useTextWriting";
-import { AuthForm } from "../../widgets/authForm";
+import { AuthMenu } from "../../widgets/authMenu";
 
 const StartPage = () => {
     const [videoClass, setVideoClass] = useState("black");
@@ -21,6 +21,7 @@ const StartPage = () => {
     );
 
     useEffect(() => {
+        let timers = [];
         const launchAnimation = (delay) => {
             [
                 () => setVideoClass(""),
@@ -28,11 +29,17 @@ const StartPage = () => {
                 () => setStartFillMessage(true),
                 () => setButtonClass("visible"),
             ].forEach((f, index) => {
-                setTimeout(f, delay * (index + 1));
+                timers[index] = setTimeout(f, delay * (index + 1));
             });
         };
 
         launchAnimation(1000);
+
+        return () => {
+            timers.forEach((timer) => {
+                clearTimeout(timer);
+            });
+        };
     }, []);
 
     const handleJoinUsButtonClick = (event) => {
@@ -67,7 +74,7 @@ const StartPage = () => {
                 </button>
             )}
             {showAuthForm && (
-                <AuthForm className={authFormWrapperClass}></AuthForm>
+                <AuthMenu className={authFormWrapperClass}></AuthMenu>
             )}
             <img
                 src="/cloud.png"

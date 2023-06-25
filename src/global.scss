@@ -4,6 +4,17 @@ body {
     background: map-get($primary_colors, "Background");
     font-family: system-ui, -apple-system, BlinkMacSystemFont;
     margin: 0 0 100px 0;
+    box-sizing: border-box;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 button,
@@ -11,6 +22,7 @@ a.button {
     display: flex;
     letter-spacing: 1px;
     user-select: none;
+    line-height: 16px;
 
     &.primary {
         padding: 12px 18px;
@@ -39,5 +51,68 @@ a.button {
         padding: 24px 54px;
         font-size: 24px;
         text-transform: uppercase;
+    }
+}
+
+form {
+    .form-error-message {
+        color: map-get($primary_colors, "Error");
+        margin: 0 0 24px 0;
+        font-size: 14px;
+        padding: 12px;
+        border: 1px solid map-get($primary_colors, "Error");
+        border-radius: 10px;
+        background: #ff505018;
+    }
+
+    .form-input {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 12px;
+
+        label {
+            margin-bottom: 5px;
+            font-size: 12px;
+            opacity: 0.6;
+            padding-left: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        input {
+            margin-bottom: 5px;
+            height: 45px;
+            line-height: 42px;
+            border-radius: 10px;
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0 10px;
+            font-size: 18px;
+
+            &[type="password"] {
+                letter-spacing: 3px;
+            }
+
+            &:focus {
+                background: white;
+                color: black;
+            }
+        }
+
+        &__error {
+            height: 19px;
+            color: map-get($primary_colors, "Error");
+            margin: 0;
+            font-size: 14px;
+        }
+
+        &.invalid,
+        &:invalid {
+            input {
+                border: 1px solid map-get($primary_colors, "Error");
+            }
+        }
     }
 }

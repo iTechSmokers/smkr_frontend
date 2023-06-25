@@ -82,20 +82,22 @@
         animation-iteration-count: infinite;
         animation-timing-function: ease;
         opacity: 0;
-        transition: 3s opacity;
+        transition: 3s;
 
         &-left {
             left: 50px;
             width: 450px;
             animation-name: cloudsMoveLeft;
-            animation-duration: 10s;
+            animation-duration: 5s;
+            top: 150px;
         }
 
         &-right {
             right: 0;
             width: 600px;
             animation-name: cloudsMoveRight;
-            animation-duration: 16s;
+            animation-duration: 5s;
+            top: 150px;
         }
 
         &.visible {
@@ -106,30 +108,24 @@
     @keyframes cloudsMoveLeft {
         0% {
             top: 150px;
-            scale: 0.9;
         }
         50% {
             top: 180px;
-            scale: 1;
         }
         100% {
             top: 150px;
-            scale: 0.9;
         }
     }
 
     @keyframes cloudsMoveRight {
         0% {
-            top: 100px;
-            scale: 0.9;
+            top: 150px;
         }
         50% {
-            top: 150px;
-            scale: 1;
+            top: 100px;
         }
         100% {
-            top: 100px;
-            scale: 0.9;
+            top: 150px;
         }
     }
 }
